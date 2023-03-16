@@ -15,17 +15,19 @@ class PlanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        //
+        $plans = Plan::paginate();
+
+        return view('plan.index', compact('plans'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Patient $patient)
+    public function create()
     {
-        return view('plans.create', compact('patient'));
+        return view('plan.create');
     }
 
     /**
@@ -55,9 +57,9 @@ class PlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Plan $plan): Response
+    public function edit(Plan $plan)
     {
-        //
+        return view('plan.edit', compact('plan'));
     }
 
     /**
@@ -65,7 +67,15 @@ class PlanController extends Controller
      */
     public function update(UpdatePlanRequest $request, Plan $plan): RedirectResponse
     {
-        //
+        DB::transaction(function() use($request, $plan) {
+            $plan->update([
+                'patient_id' => $request->get('patient_id'),
+                'start' => $request->get('start'),
+                'end' => $request->get('end')
+            ]);
+        });
+
+        return redirect()->route('plan.index');
     }
 
     /**
@@ -73,6 +83,7 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan): RedirectResponse
     {
-        //
+        $plan->delete();
+        return redirect()->route('plan.index');
     }
 }

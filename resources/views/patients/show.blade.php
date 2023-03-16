@@ -6,8 +6,9 @@
                 <x-heading
                     title="Paciente"
                     description="Detalhes do Paciente"
-                    btn-label="Add Planejamento"
-                    :route="route('plans.patient.create', $patient)" />
+{{--                    btn-label="Add Planejamento"--}}
+{{--                    :route="route('plans.patient.create', $patient)" --}}
+                />
 
                 <div class="w-full overflow-hidden md:rounded-lg bg-gray-600">
                     <div class="p-4">

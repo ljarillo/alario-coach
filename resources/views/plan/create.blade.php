@@ -6,9 +6,9 @@
     </x-slot>
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('plans.store') }}">
+            <form method="POST" action="{{ route('plan.store') }}">
                 @csrf
-                <x-text-input id="patient_id" class="block w-full mt-1" type="text" name="patient_id" :value="$patient->id" required />
+                <x-text-input id="patient_id" class="block w-full mt-1" type="text" name="patient_id" :value="old('patient_id')" required />
 
                 <!-- Date Start -->
                 <div>
