@@ -18,6 +18,7 @@
                         ['label' => 'Phone', 'column' => 'phone'],
                     ]
                     "
+                        show="patients.show"
                         edit="patients.edit"
                         delete="patients.destroy"
                     ></livewire:table>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PatientController;
+use \App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/patients', PatientController::class);
+    Route::resource('/plans', PlanController::class);
+    Route::get('/plans/create/{patient}', [PlanController::class, 'create'])->name('plans.patient.create');
 });
 
 require __DIR__.'/auth.php';

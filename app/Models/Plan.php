@@ -13,16 +13,23 @@ class Plan extends Model
 
     protected $fillable = [
         'patient_id',
-        'priority',
-        'question1',
-        'question2',
-        'question3',
-        'question4',
-        'question5',
+        'start',
+        'end',
     ];
 
     public function patient(): HasOne
     {
         return $this->hasOne(Patient::class);
     }
+
+    public function priorities(): HasMany
+    {
+        return $this->hasMany(Priority::class);
+    }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class);
+    }
+
 }
