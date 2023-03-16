@@ -11,7 +11,7 @@ class StorePriorityRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StorePriorityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'plan_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'description' => 'required',
+            'observation' => '',
         ];
     }
 }

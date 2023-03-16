@@ -43,7 +43,7 @@ class PlanController extends Controller
             ]);
         });
 
-        return redirect()->route('patients.show', $request->get('patient_id'));
+        return redirect()->route('plan.index');
     }
 
     /**
